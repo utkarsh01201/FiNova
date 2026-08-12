@@ -1,0 +1,58 @@
+# ===========================
+# Finova — FinTech App .gitignore
+# ===========================
+
+# === Backend (Java/Spring Boot/Maven) ===
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/*.class
+backend/*.log
+backend/mvnw.cmd
+backend/mvnw
+
+# === Frontend (Node/React/Vite) ===
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.cache/
+
+# === ML Service (Python) ===
+ml_service/__pycache__/
+ml_service/*.pyc
+ml_service/*.pyo
+ml_service/.env
+ml_service/venv/
+ml_service/.venv/
+
+# === IDEs & Editors ===
+.idea/
+*.iml
+.vscode/
+*.suo
+*.user
+.project
+.classpath
+.settings/
+
+# === OS Files ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Secrets & Env Files ===
+.env
+.env.local
+.env.production
+*.secret
+
+# === Logs ===
+*.log
+logs/
+
+# === Docker ===
+# (docker-compose.yml is intentionally committed)
+
+# === Misc ===
+*.tmp
+*.bak
+*.swp

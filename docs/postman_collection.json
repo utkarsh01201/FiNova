@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "c1f7a8b0-5e6f-4d3a-8b9c-0e1f2a3b4c5d",
+		"name": "Finova Fintech Digital Wallet API",
+		"description": "Postman API Collection for Finova Digital Wallet Platform. All money is virtual for educational/simulation purposes.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"utkarsh_user\",\n  \"email\": \"utkarsh@finova.com\",\n  \"phoneNumber\": \"9876543210\",\n  \"fullName\": \"Utkarsh Vatshayan\",\n  \"password\": \"Password@123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					}
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"usernameOrEmailOrPhone\": \"utkarsh@finova.com\",\n  \"password\": \"Password@123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Current User Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/auth/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"me"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Wallet Operations",
+			"item": [
+				{
+					"name": "Get Wallet Balance",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/wallet",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"wallet"
+							]
+						}
+					}
+				},
+				{
+					"name": "Add Demo Money to Wallet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": 1000.00,\n  \"paymentSourceDescription\": \"Simulated Demo Card ending 4242\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/wallet/add-money",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"wallet",
+								"add-money"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Money Transfer & Requests",
+			"item": [
+				{
+					"name": "Send Virtual Money P2P",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"recipientIdentifier\": \"rahul_finova\",\n  \"amount\": 500.00,\n  \"description\": \"Dinner split payment\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transactions/send",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions",
+								"send"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Money Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"payerIdentifier\": \"rahul_finova\",\n  \"amount\": 250.00,\n  \"description\": \"Movie ticket share\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/requests",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"requests"
+							]
+						}
+					}
+				}
+			]
+		}
+	]
+}
